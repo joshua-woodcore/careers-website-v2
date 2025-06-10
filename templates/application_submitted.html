@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Application Submitted</title>
+        {% include 'bootstrap.html' %}
+    </head>
+    <body>
+        {% include 'nav.html' %}
+        <img class="img-fluid" id="banner" src="/static/banner.jpeg" alt="Tega Careers Banner">
+
+        <div class="container">
+            <h1 class="text-center mt-2 mb-4">Tega Careers</h1>
+
+            <p>Your Application for <b>{{ job['title'] }}</b> role has been submitted</p>
+
+            <div class="mb-4">
+                <b class="mb-0">Full Name</b><br>
+                {{ application['full_name'] }}
+            </div>
+
+            <div class="mb-4">
+                <b class="mb-0">Email</b><br>
+                {{ application['email'] }}
+            </div>
+
+            <div class="mb-4">
+                <b class="mb-0">LinkedIn URL</b><br>
+                {{ application['linkedin_url'] }}
+            </div>
+
+            <div class="mb-4">
+                <b class="mb-0">Education</b><br>
+                {{ application['education'] }}
+            </div>
+
+            <div class="mb-4">
+                <b class="mb-0">Work Experience</b><br>
+                {{ application['experience'] }}
+            </div>
+
+            <div class="mb-4">
+                <b class="mb-0">Resume URL</b><br>
+                {{ application['resume_url'] }}
+            </div>
+        </div>
+
+        {% include 'footer.html' %}
+    </body>
+</html>

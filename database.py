@@ -50,4 +50,16 @@ def fetch_jobs(job_id=None):
             result = cursor.fetchall()
     return result
 
-
+def insert_application(job_id, application):
+    with connection.cursor() as cursor:
+        sql = "INSERT INTO applications (job_id, full_name, email, linkedin_url, education, work_experience, resume_url) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(sql, (job_id,
+                             application['full_name'],
+                             application['email'],
+                             application['linkedin_url'],
+                             application['education'],
+                             application['experience'],
+                             application['resume_url']))
+        # Commit the transaction
+        connection.commit()
+        return cursor.lastrowid
