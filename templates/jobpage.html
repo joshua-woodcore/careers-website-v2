@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{ job.title }} - Tega Careers</title>
+        {% include 'bootstrap.html' %}
+    </head>
+    <body>
+        {% include 'nav.html' %}
+
+        <img class="img-fluid" id="banner" src="../static/banner.jpeg" alt="Tega Careers Banner">
+
+        <div class="container">  
+            <h1 class="text-center mt-2 mb-4">Tega Careers</h1>
+            <h3 class="mb-2">{{ job.title }}</h3>
+            <p class="lead mt-0">{{ job.location }}</p>
+            <h5>Responsibilities</h5>
+            <ul>
+                {% for responsibility in job.responsibilities.split(";") %}
+                    <li>{{ responsibility }}</li>
+                {% endfor %}
+            </ul>
+            <h5>Requirements</h5>
+            <ol>
+                {% for requirement in job.requirements.split(";") %}
+                    <li>{{ requirement }}</li>
+                {% endfor %}
+            </ol>
+            <h5>Salary</h5>
+            <p>{{ job.currency }} {{ job.salary }}</p>
+        </div>
+        <div class="container text-center my-4">
+            <a href="mailto:careers@tega.me?subject=Application%20for%20{{ job.title }}%20Role&body=Name%3A%20%3Cyour%20name%20here%3E%0D%0A%0D%0ACover%20Letter%3A%20%3Ctype%20here%3E%0D%0A%0D%0AResume%3A%20%3Cresume%20link%3E" class="btn btn-primary btn-lg">
+                Apply for this job
+            </a>
+        </div>
+
+        {% include 'footer.html' %}
+    </body>
+</html>

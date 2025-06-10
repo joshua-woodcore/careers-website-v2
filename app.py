@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify
-from database import fetch_all_jobs
+from database import fetch_all_jobs, fetch_jobs
 
 app = Flask(__name__)
 
@@ -10,6 +10,15 @@ def hello_world():
     jobs = fetch_all_jobs()
     return render_template('home.html',
                            jobs=jobs)
+
+
+@app.route('/job/<id>')
+def show_job(id):
+    job = fetch_jobs(id)
+    if not job:
+        return "Job not found", 404
+    return render_template('jobpage.html',
+                           job=job)
 
 
 @app.route('/api/jobs')
